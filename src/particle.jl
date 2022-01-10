@@ -18,7 +18,7 @@ mutable struct Particle
 end
 
 function move!(particle::Particle, velocity::Array{Float64})
-    particle.q += velocity * 0.1
+    particle.q += velocity * 0.01
 end
 
 function move!(particle::Particle)

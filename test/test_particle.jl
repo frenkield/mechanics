@@ -18,15 +18,18 @@ end
 function test2()
 
     particle1 = Particle()
+    particle1.mass = 10.0
     particle1.q[1] = -1.0
+    particle1.p[2] = 1.0
 
     particle2 = Particle()
     particle2.q[1] = 1.0
+    particle2.p[2] = -1.0
 
     particle1_p_dot = [0.0, 0.0, 0.0]
     particle2_p_dot = [0.0, 0.0, 0.0]
 
-    for i in 1:250
+    for i in 1:1000
 
         plot(particle1)
         display(plot!(particle2))       
@@ -39,13 +42,13 @@ function test2()
         particle1_p_dot[2] = (particle2.q[2] - particle1.q[2]) / d
         particle2_p_dot[2] = -particle1_p_dot[2]
 
-        particle1.p += (particle1_p_dot * 0.1)
-        particle2.p += (particle2_p_dot * 0.1)
+        particle1.p += (particle1_p_dot * 0.01)
+        particle2.p += (particle2_p_dot * 0.01)
 
         move!(particle1)
         move!(particle2)
 
-        sleep(0.1)
+        # sleep(0.01)
     end
 
 end
