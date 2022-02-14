@@ -3,6 +3,7 @@ include("system.jl")
 
 Base.@kwdef mutable struct Hamiltonian
     system = System(6)
+    forces = zeros(size(system))
 end
 
 function q_dot(hamiltonian::Hamiltonian, index::Int)
@@ -39,3 +40,25 @@ function size(hamiltonian::Hamiltonian)
     return size(hamiltonian.system)
 end
 
+function compute_forces!(hamiltonian::Hamiltonian)
+
+    q = hamiltonian.system.q
+    forces = hamiltonian.forces
+
+    r = norm(q[1:3] - q[4:6])
+
+    for i in 1:3
+        forces[i] = (q[i + 3] - q[i]) / (r^3)
+        forces[i + 3] = -forces[i]
+    end
+
+end
+
+
+function energy()
+
+        # energy = 0.5 * sum(p.^2)
+    # energy -= 1/r
+    # println(energy)
+
+end

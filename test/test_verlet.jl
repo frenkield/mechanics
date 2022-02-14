@@ -48,7 +48,7 @@ function test3()
 
     for i in 1:2000
 
-        println(verlet.forces)
+        # println(verlet.forces)
 
         iterate!(verlet)
 
@@ -59,10 +59,39 @@ function test3()
 
 end
 
+function test4()
+
+    hamiltonian = Hamiltonian()
+    verlet = Verlet(hamiltonian)
+
+    hamiltonian.system.q = [-1.0, 0, 0,
+                            1, 0, 0]
+
+    hamiltonian.system.p = [0.0, -0.55, 0,
+                            0, 0.55, 0]
+
+    for i in 1:1000
+
+        # println(hamiltonian.system.q)
+
+
+
+        iterate!(verlet)
+
+        println(verlet.hamiltonian.forces)
+        println(verlet.hamiltonian.system.q)
+
+        plot(hamiltonian.system)
+
+        # sleep(0.05)
+    end
+
+end
+
 default(xlims= (-2, 2), ylims = (-2, 2))
 plot()
 
-test3()
+test4()
 
 
 
