@@ -4,6 +4,8 @@ include("../src/hamiltonian.jl")
 function test1()
 
     hamiltonian = Hamiltonian()
+    @test size(hamiltonian) == 6
+
     q = hamiltonian.system.q
 
     q[1] = 1.0

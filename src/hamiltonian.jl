@@ -35,3 +35,7 @@ function p_dot(hamiltonian::Hamiltonian)
 
 end
 
+function size(hamiltonian::Hamiltonian)
+    return size(hamiltonian.system)
+end
+
