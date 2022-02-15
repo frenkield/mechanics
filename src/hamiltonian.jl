@@ -1,9 +1,9 @@
-using LinearAlgebra
+# using LinearAlgebra
 include("system.jl")
+include("gravitational_potential.jl")
 
 Base.@kwdef mutable struct Hamiltonian
     system = System(6)
-    forces = zeros(size(system))
 end
 
 function q_dot(hamiltonian::Hamiltonian, index::Int)
@@ -40,20 +40,13 @@ function size(hamiltonian::Hamiltonian)
     return size(hamiltonian.system)
 end
 
-function compute_forces!(hamiltonian::Hamiltonian)
+# function compute_forces!(hamiltonian::Hamiltonian)
+#     compute_forces!(hamiltonian.system, hamiltonian.forces)
+# end
 
-    q = hamiltonian.system.q
-    forces = hamiltonian.forces
-
-    r = norm(q[1:3] - q[4:6])
-
-    for i in 1:3
-        forces[i] = (q[i + 3] - q[i]) / (r^3)
-        forces[i + 3] = -forces[i]
-    end
-
-end
-
+# function compute_accelerations!(hamiltonian::Hamiltonian)
+#     compute_accelerations!(hamiltonian.system, hamiltonian.  accelerations)
+# end
 
 function energy()
 

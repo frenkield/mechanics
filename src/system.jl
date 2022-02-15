@@ -1,14 +1,14 @@
 using Plots
 
-
 Base.@kwdef mutable struct System
 
     q::Vector{Float64}
     p::Vector{Float64}
-    mass = 1.0
+    masses::Vector{Float64}
 
     function System(particle_count::Int)
-        system = new(zeros(particle_count), zeros(particle_count), 1.0)
+        system = new(zeros(particle_count), zeros(particle_count))
+        system.masses = ones(particle_count)
         return system
     end
 
