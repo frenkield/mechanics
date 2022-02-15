@@ -27,10 +27,11 @@ function compute_accelerations!(system::System, accelerations::Vector{Float64})
 
 end
 
-function compute_potential_energy()
+function compute_potential_energy(system::System)
 
-    # energy = 0.5 * sum(p.^2)
-    # energy -= 1/r
-    # println(energy)
+    q = system.q
+    masses = system.masses
+    r = norm(q[1:3] - q[4:6])
 
+    return -1/r * masses[1] * masses[4]    
 end

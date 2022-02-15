@@ -1,6 +1,6 @@
 using Plots
 
-Base.@kwdef mutable struct System
+mutable struct System
 
     q::Vector{Float64}
     p::Vector{Float64}

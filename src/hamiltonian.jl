@@ -48,10 +48,9 @@ end
 #     compute_accelerations!(hamiltonian.system, hamiltonian.  accelerations)
 # end
 
-function energy()
-
-        # energy = 0.5 * sum(p.^2)
-    # energy -= 1/r
-    # println(energy)
-
+function compute_energy(hamiltonian::Hamiltonian)
+    p = hamiltonian.system.p
+    energy = 0.5 * sum(p.^2)
+    # energy += compute_potential_energy(hamiltonian.system)
+    return energy
 end

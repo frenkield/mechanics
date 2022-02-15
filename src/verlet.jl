@@ -15,7 +15,7 @@ mutable struct Verlet
         verlet = new(hamiltonian)
         verlet.forces = zeros(size(hamiltonian.system))
         verlet.accelerations = zeros(size(hamiltonian.system))
-        verlet.time_step = 0.005    
+        verlet.time_step = 0.0001    
         return verlet
 
     end
