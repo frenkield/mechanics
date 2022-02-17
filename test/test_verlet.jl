@@ -99,26 +99,30 @@ function test5()
     hamiltonian = Hamiltonian()
     verlet = Verlet(hamiltonian)
 
-    hamiltonian.system.q = [0.0, 0, 0,
-                            10, 0, 0]
+    hamiltonian.system.q .= [0.0, 0, 0,
+                             10, 0, 0]
 
-    hamiltonian.system.p = [0.0, 0.0, 0,
-                            0, 20, 0]
+    hamiltonian.system.p .= [0.0, 0.0, 0,
+                             0, 20, 0]
 
     mass1 = 10000
     mass2 = 1
-    hamiltonian.system.masses = [mass1, mass1, mass1,
-                                 mass2, mass2, mass2]
+    hamiltonian.system.masses .= [mass1, mass1, mass1,
+                                  mass2, mass2, mass2]
 
-    for i in 1:10000
+    iterate!(verlet)
 
-        println(compute_energy(hamiltonian))
+    # p = hamiltonian.system.p
 
-        iterate!(verlet)
-        plot(hamiltonian.system)
+    # for i in 1:1000000
 
-        # sleep(0.05)
-    end
+    #     # println(compute_energy(hamiltonian))
+
+    #     iterate!(verlet, p)
+    #     # plot(hamiltonian.system)
+
+    #     # sleep(0.05)
+    # end
 
 end
 

@@ -1,4 +1,3 @@
-# using LinearAlgebra
 include("system.jl")
 include("gravitational_potential.jl")
 
@@ -40,17 +39,9 @@ function size(hamiltonian::Hamiltonian)
     return size(hamiltonian.system)
 end
 
-# function compute_forces!(hamiltonian::Hamiltonian)
-#     compute_forces!(hamiltonian.system, hamiltonian.forces)
-# end
-
-# function compute_accelerations!(hamiltonian::Hamiltonian)
-#     compute_accelerations!(hamiltonian.system, hamiltonian.  accelerations)
-# end
-
 function compute_energy(hamiltonian::Hamiltonian)
     p = hamiltonian.system.p
     energy = 0.5 * sum(p.^2)
-    # energy += compute_potential_energy(hamiltonian.system)
+    energy += compute_potential_energy(hamiltonian.system)
     return energy
 end

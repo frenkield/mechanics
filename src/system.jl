@@ -7,8 +7,7 @@ mutable struct System
     masses::Vector{Float64}
 
     function System(particle_count::Int)
-        system = new(zeros(particle_count), zeros(particle_count))
-        system.masses = ones(particle_count)
+        system = new(zeros(particle_count), zeros(particle_count), ones(particle_count))
         return system
     end
 
@@ -23,6 +22,6 @@ function Plots.plot(system::System)
     display(plot!(system.q[4:4], system.q[5:5], marker = (:dot, 5)))
 end
 
-# function Plots.plot!(system::System)
-#     return plot!(system.q[1:1], system.q[2:2], marker = (:dot, 5))
-# end
+function Plots.plot!(system::System)
+    return plot!(system.q[1:1], system.q[2:2], marker = (:dot, 5))
+end
